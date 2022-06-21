@@ -16,7 +16,7 @@ jobs:
       - name: generate artifact for deployment
         uses: actions/upload-artifact@v2
         with: 
-          name: ${{ github.event.repository.name }}-v${{ github.run_attempt }}
+          name: ${{ github.event.repository.name }}-v${{ github.run_number }}
           path: |
             public
             public/build
