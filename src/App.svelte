@@ -4,7 +4,7 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p><img src=app_show.png></p>
+	<p><img src=app_show.png width=25% height=25%></p>
 </main>
 
 <style>
