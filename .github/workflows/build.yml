@@ -1,7 +1,7 @@
 on:
   push:
-    paths-ignore:
-      - '**.md'
+    paths:
+      - '**.yml'
 
 jobs:
   publish:
@@ -13,10 +13,13 @@ jobs:
           node-version: 12
       - run: npm install
       - run: npm run build
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: generate artifact for deployment
         uses: actions/upload-artifact@v2
         with: 
-          name: ${{ github.event.repository.name }}-v${{ github.run_number }}
+          name: ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           path: |
             public
             public/build
