@@ -31,10 +31,10 @@ jobs:
           git add public/\*
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push
-          with:
-            path: |
-              public
-              public/build
+      - with:
+          path: |
+            public
+            public/build
       - name: generate zip-artifact from public folders
         uses: actions/upload-artifact@v2
         with: 
