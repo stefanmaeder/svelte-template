@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - '.github/workflows/**.yml'
+      - '.github/workflows/build.yml'
       - 'src/**'
       - 'public/**'
 
@@ -12,16 +12,17 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 18
       - run: npm install
       - run: npm run build
-      - uses: szenius/set-timezone@v1.0
+      - name: set timezone to berlin
+        uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: "Europe/Berlin"
-      - name: Get current date
+      - name: get current day and time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H%M')"
-      - name: generate artifact for deployment
+      - name: generate zip-artifact from public folders
         uses: actions/upload-artifact@v2
         with: 
           name: ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
