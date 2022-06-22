@@ -22,6 +22,15 @@ jobs:
       - name: get current day and time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H%M')"
+      - uses: actions/checkout@v3
+        with:
+            ref: production
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/\*
+          git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
+          git push
       - name: generate zip-artifact from public folders
         uses: actions/upload-artifact@v2
         with: 
