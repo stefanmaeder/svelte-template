@@ -37,6 +37,7 @@ jobs:
           git rm --cached package.json --ignore-unmatch
           git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
+          mv ./public ..
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
