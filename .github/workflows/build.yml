@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
       - run: npm install
       - run: npm run build
       - name: set timezone to berlin
@@ -30,7 +30,7 @@ jobs:
           git checkout -b "production"
 
           mv ./public/* ./
-          ls -al # list the files for confirmation.
+          #ls -al # list the files for confirmation.
 
           git rm -r --cached .github/workflows --ignore-unmatch
           git rm -r --cached scripts --ignore-unmatch
@@ -40,6 +40,6 @@ jobs:
           git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
 
-          git add -u .
+          git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
