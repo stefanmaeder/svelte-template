@@ -30,6 +30,12 @@ jobs:
           git checkout -b "production"
           ls -al # list the files for confirmation.
           git rm -r --cached .github/workflows
+          git rm -r --cached scripts
+          git rm -r --cached src
+          git rm --cached README.md
+          git rm --cached package.json
+          git rm --cached rollup.config.json
+          git rm --cached .gitignore
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
