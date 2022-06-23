@@ -27,6 +27,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout -b "production"
+          git branch --set-upstream-to origin/production
           ls -al # list the files for confirmation.
           git add public
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
