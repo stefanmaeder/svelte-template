@@ -1,10 +1,2 @@
 /node_modules/
 .DS_Store
-
-/src/
-/scripts/
-/.github/workflows/
-README.md
-package.json
-package-lock.json
-rollup.config.js
