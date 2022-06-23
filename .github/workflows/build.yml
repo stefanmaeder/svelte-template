@@ -36,7 +36,7 @@ jobs:
           git rm --cached package.json --ignore-unmatch
           git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
-          mv public .
+          mv ./public .
           ls -al # list the files for confirmation.
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
