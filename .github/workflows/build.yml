@@ -1,15 +1,18 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  build:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: stefanmaeder/test-action@main
+      - uses: actions/checkout@v2
+      - uses: stefanmaeder/test-action@main
+      - run: ls -la $GITHUB_WORKSPACE
+      - run: ls -la /home/runner/work/_temp/_github_home
+      - uses: actions/upload-artifact@v2
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          name: workspace_artifacts
+          path: ${{github.workspace}}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: home-artifacts
+          path: /home/runner/work/_temp/_github_home
