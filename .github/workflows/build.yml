@@ -40,6 +40,6 @@ jobs:
           git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
 
-          git add .
+          git add -u .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
