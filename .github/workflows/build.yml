@@ -45,7 +45,7 @@ jobs:
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
           
-          uses: actions/svelte-builder
+      - uses: actions/svelte-builder@master
       #- name: generate zip-artifact from public folders
       #  uses: actions/upload-artifact@v2
       #  with: 
