@@ -29,13 +29,13 @@ jobs:
          git config user.email github-actions@github.com
           git checkout -b "production"
           ls -al # list the files for confirmation.
-          git rm -r --cached .github/workflows
-          git rm -r --cached scripts
-          git rm -r --cached src
-          git rm --cached README.md
-          git rm --cached package.json
-          git rm --cached rollup.config.json
-          git rm --cached .gitignore
+          git rm -r --cached .github/workflows --quiet
+          git rm -r --cached scripts --quiet
+          git rm -r --cached src --quiet
+          git rm --cached README.md --quiet
+          git rm --cached package.json --quiet
+          git rm --cached rollup.config.json --quiet
+          git rm --cached .gitignore --quiet
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
