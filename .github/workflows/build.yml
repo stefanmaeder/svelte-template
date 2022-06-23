@@ -29,6 +29,8 @@ jobs:
          git config user.name github-actions
          git config user.email github-actions@github.com
           git checkout -b "production"
+
+
           git rm -r --cached .github/workflows --ignore-unmatch
           git rm -r --cached scripts --ignore-unmatch
           git rm -r --cached src --ignore-unmatch
@@ -36,15 +38,15 @@ jobs:
           git rm --cached package.json --ignore-unmatch
           git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
-          mv ./public ..
-          ls -al # list the files for confirmation.
+
+          cd public
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push --set-upstream origin production --force
-      - name: generate zip-artifact from public folders
-        uses: actions/upload-artifact@v2
-        with: 
-          name: ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
-          path: |
-            public
-            public/build
+      #- name: generate zip-artifact from public folders
+      #  uses: actions/upload-artifact@v2
+      #  with: 
+      #    name: ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
+      #    path: |
+      #      public
+      #      public/build
