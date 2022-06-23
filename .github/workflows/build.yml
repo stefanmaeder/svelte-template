@@ -31,7 +31,7 @@ jobs:
           git config user.email github-actions@github.com
           git fetch
           git checkout "production"
-          git add git add public/\*
+          git add public/\*
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
           git push
       - name: generate zip-artifact from public folders
