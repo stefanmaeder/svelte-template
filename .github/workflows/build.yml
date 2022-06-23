@@ -35,7 +35,7 @@ jobs:
           git rm -r --cached src --ignore-unmatch
           git rm --cached README.md --ignore-unmatch
           git rm --cached package.json --ignore-unmatch
-          git rm --cached rollup.config.json --ignore-unmatch
+          git rm --cached rollup.config.js --ignore-unmatch
           git rm --cached .gitignore --ignore-unmatch
           git add .
           git commit -m ${{ steps.date.outputs.date }}-${{ github.event.repository.name }}-build${{ github.run_number }}
