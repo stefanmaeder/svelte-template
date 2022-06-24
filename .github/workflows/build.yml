@@ -6,13 +6,3 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: stefanmaeder/test-action@main
-      - run: ls -la $GITHUB_WORKSPACE
-      - run: ls -la /home/runner/work/_temp/_github_home
-      - uses: actions/upload-artifact@v2
-        with:
-          name: workspace_artifacts
-          path: ${{github.workspace}}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: home-artifacts
-          path: /home/runner/work/_temp/_github_home
